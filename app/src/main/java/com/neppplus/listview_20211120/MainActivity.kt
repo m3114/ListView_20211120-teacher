@@ -27,6 +27,9 @@ class MainActivity : AppCompatActivity() {
 
         mStudentAdapter = StudentAdapter(this, R.layout.student_list_item, mStudentList)
 
+        studentListView.adapter = mStudentAdapter
+
+
 
     }
 }
