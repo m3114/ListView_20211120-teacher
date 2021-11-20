@@ -1,8 +1,10 @@
 package com.neppplus.listview_20211120
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.neppplus.listview_20211120.adapters.StudentAdapter
 import com.neppplus.listview_20211120.datas.StudentData
 import kotlinx.android.synthetic.main.activity_main.*
@@ -37,13 +39,28 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        studentListView.setOnItemLongClickListener{addContentView, view, position, l ->           val longClickedStudent = mStudentList[position]
+        studentListView.setOnItemLongClickListener{addContentView, view, position, l ->
+            val longClickedStudent = mStudentList[position]
 
 //            Toast.makeText(this, "${longClickedStudent.name} 길게 클릭됨", Toast.LENGTH_SHORT).show()
+// 학생제거전에 삭제할건지 물어보자 alertdialog
 
-            mStudentList.remove(longClickedStudent)
+            val alert = AlertDialog.Builder(this)
+            alert.setTitle("학생 삭제 확인")
+            alert.setMessage("정말!${longClickedStudent.name} ??학생을 삭제하시겠습니까?")
+            alert.setPositiveButton("확인", DialogInterface.OnClickListener { dialogInterface, i ->
 
-            mStudentAdapter.notifyDataSetChanged()
+                mStudentList.remove(longClickedStudent)
+
+                mStudentAdapter.notifyDataSetChanged()
+//                확인버튼이 눌릴때 실행할 코드
+            })
+            alert.setNegativeButton("취소",null)
+
+            alert.show()
+//
+
+
 
             return@setOnItemLongClickListener true
 
