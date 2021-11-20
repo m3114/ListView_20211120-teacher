@@ -41,8 +41,17 @@ class StudentAdapter(
 //        뿌려진 ui들을 가져오자, row 내부에서 찾아오자
         
         val txtStudentName = row.findViewById<TextView>(R.id.txtStudentName)
+        val txtAge = row.findViewById<TextView>(R.id.txtAge)
+        val txtAddress = row.findViewById<TextView>(R.id.txtAddress)
+
+        
 //        ui에 데이터를 필요한 변수 추출 반영
         txtStudentName.text = data.name
+//        txtAge.text = "${data.birthYear} 년생"
+//        (34세 등으로 나이를 계산.가공)
+        val age = 2021 - data.birthYear + 1
+        txtAge.text = "(세${age}세)"
+        txtAddress.text = data.address
 
 //        row에 담긴xml 화면에 뿌려주게 내보내주자
 
