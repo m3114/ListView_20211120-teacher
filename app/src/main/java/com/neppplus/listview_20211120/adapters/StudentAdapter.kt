@@ -49,8 +49,8 @@ class StudentAdapter(
         txtStudentName.text = data.name
 //        txtAge.text = "${data.birthYear} 년생"
 //        (34세 등으로 나이를 계산.가공)
-        val age = 2021 - data.birthYear + 1
-        txtAge.text = "(${age}세)"
+
+        txtAge.text = "(${data.getAgeByYear(2076)}세)"
         txtAddress.text = data.address
 
 //        row에 담긴xml 화면에 뿌려주게 내보내주자
