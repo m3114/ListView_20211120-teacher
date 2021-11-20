@@ -1,6 +1,7 @@
 package com.neppplus.listview_20211120
 
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -35,7 +36,13 @@ class MainActivity : AppCompatActivity() {
         studentListView.setOnItemClickListener{addContentView,view, position,l ->
             val clilkedStudent = mStudentList[position]
 
-            Toast.makeText(this, "${clilkedStudent.name}클릭됨", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "${clilkedStudent.name}클릭됨", Toast.LENGTH_SHORT).show()
+            val myIntent = Intent(this, ViewStudentDatellActivity::class.java)
+            myIntent.putExtra("name", clilkedStudent.name)
+            myIntent.putExtra("age", clilkedStudent.getAgeByYear(2021))
+            myIntent.putExtra("address", clilkedStudent.address)
+
+            startActivity(myIntent)
 
         }
 
@@ -59,9 +66,6 @@ class MainActivity : AppCompatActivity() {
 
             alert.show()
 //
-
-
-
             return@setOnItemLongClickListener true
 
 
