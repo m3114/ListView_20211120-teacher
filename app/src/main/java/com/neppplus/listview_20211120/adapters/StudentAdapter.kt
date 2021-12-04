@@ -30,6 +30,8 @@ class StudentAdapter(
             tempRow =  mInflater.inflate(R.layout.student_list_item, null)
 
         }
+
+
 //        xml= row변수에 담아주자
 
         val row = tempRow!!
